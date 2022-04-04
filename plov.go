@@ -100,7 +100,7 @@ var re = regexp.MustCompile(`^x `)
 func layers(path string) []string {
 	f, err := ioutil.ReadFile(path)
 	catch(err)
-	lns := strings.Split(string(f), "\n")
+	lns := strings.Split(strings.Replace(string(f), "\r\n", "\n", -1), "\n")
 	var lrs []string
 	for _, l := range lns {
 		if l == "" || re.FindString(l) != "" {
