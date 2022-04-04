@@ -14,7 +14,7 @@ layer3.png
 
 Sub-commands:
 
-`flatten` - combines the images in layers.txt and returns in 1:1 format as flat.png
+`flatten` - combines the images listed in layers.txt and returns in 1:1 format as flat.png
 
 `explode <filename.png>` - Converts a 1:1 template image into the 3:1 overlay format
 
