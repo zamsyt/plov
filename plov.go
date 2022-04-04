@@ -53,6 +53,28 @@ func explode(img image.Image) image.Image {
 	return newImg
 }
 
+func implode(img image.Image) image.Image {
+	b := img.Bounds()
+
+	if b.Dx()%3 != 0 || b.Dy()%3 != 0 {
+		log.Fatal("Image dimensions aren't divisible by 3")
+	}
+
+	newImg := image.NewRGBA(
+		image.Rect(b.Min.X/3, b.Min.Y/3, b.Max.X/3, b.Max.Y/3),
+	)
+
+	nb := newImg.Bounds()
+
+	for y := nb.Min.Y; y < nb.Max.Y; y++ {
+		for x := nb.Min.X; x < nb.Max.X; x++ {
+			newImg.Set(x, y, img.At(3*x+1, 3*y+1))
+		}
+	}
+
+	return newImg
+}
+
 func savePng(img image.Image, path string) {
 	f, err := os.Create(path)
 	catch(err)
@@ -167,7 +189,9 @@ func main() {
 	case "flatten":
 		savePng(flatten(getPngs(layers("layers.txt"))), "flat.png")
 	case "explode":
-		savePng(explode(getPng(os.Args[2])), "result.png")
+		savePng(explode(getPng(os.Args[2])), "exploded.png")
+	case "implode":
+		savePng(implode(getPng(os.Args[2])), "imploded.png")
 	case "crop":
 		if len(os.Args) < 3 {
 			cropLayers()

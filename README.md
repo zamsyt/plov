@@ -16,6 +16,8 @@ Sub-commands:
 
 `flatten` - combines the images listed in layers.txt and returns in 1:1 format as flat.png
 
-`explode <filename.png>` - Converts a 1:1 template image into the 3:1 overlay format
+`explode <filename.png>` - Converts a 1:1 template image into the 3:1 overlay format. Returns as exploded.png
+
+`implode` <filename.png> - Converts 3:1 overlay image back to 1:1 format. Returns as imploded.png
 
 `crop` or `crop <filename.png>` - Crops an image (or the images in layers.txt) to remove empty space on the edges (for easy sharing of templates as images)
