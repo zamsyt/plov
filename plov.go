@@ -147,7 +147,7 @@ maxX:
 	for x := b.Max.X; x > minX; x-- {
 		for y := minY; y < b.Max.Y; y++ {
 			if !isTransparent(img.At(x, y)) {
-				maxX = x
+				maxX = x + 1
 				break maxX
 			}
 		}
@@ -157,7 +157,7 @@ maxY:
 	for y := b.Max.Y; y > minY; y-- {
 		for x := minX; x < maxX; x++ {
 			if !isTransparent(img.At(x, y)) {
-				maxY = y
+				maxY = y + 1
 				break maxY
 			}
 		}
